@@ -13,12 +13,13 @@ func main() {
 	var str string
 	var input int
 	var err error
+	var name, pwd string
 
 	for {
 		utils.ShowClientLoginMenu()
 
 		if _, errInput := fmt.Scanln(&str); errInput != nil {
-			fmt.Println("[错误]:输入格式错误,应该是整型[0, 2].")
+			fmt.Printf("[错误]:输入发生错误,应该是整型[0, 2].\n\n")
 			continue
 		}
 
@@ -31,12 +32,13 @@ func main() {
 		} else {
 			input, err = strconv.Atoi(str)
 			if err != nil {
-				fmt.Println("[错误]:输入格式错误,应该是整型[0, 2].")
+				fmt.Printf("[错误]:输入格式错误,应该是整型[0, 2].\n\n")
 				continue
 			} else if utils.InputIsValid(input, 0, 2) {
 				switch input {
 				case 1:
 					// 登录
+					Login(&name, &pwd)
 				case 2:
 					// 注册
 				case 0:
@@ -44,7 +46,7 @@ func main() {
 					os.Exit(0)
 				}
 			} else {
-				fmt.Println("[错误]:输入范围错误,应该是整型[0, 2].")
+				fmt.Printf("[错误]:输入范围错误,应该是整型[0, 2].\n\n")
 				continue
 			}
 		}
