@@ -47,8 +47,6 @@ func CreateMsg(msgType string, dataMsg interface{}) (msg model.Message, err erro
 	return
 }
 
-// 解析报文
-
 // 读取报文
 func ReadMsg(conn net.Conn) (msg model.Message, err error) {
 	var b = make([]byte, 10240)

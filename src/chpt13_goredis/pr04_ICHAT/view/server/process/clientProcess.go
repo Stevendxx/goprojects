@@ -15,7 +15,7 @@ import (
 // 处理登录报文
 func HandleLoginMsg(conn net.Conn, msg model.Message) (err error) {
 
-	var loginMsg model.LoginMessage
+	var loginMsg = model.LoginMessage{}
 	err = json.Unmarshal([]byte(msg.Data), &loginMsg)
 	if err != nil {
 		fmt.Println("[错误]:报文解析错误.")
