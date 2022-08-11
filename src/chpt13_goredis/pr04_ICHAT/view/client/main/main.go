@@ -3,7 +3,6 @@ package main
 import (
 	"fmt"
 	"os"
-	"os/exec"
 	"strconv"
 
 	"github.com/gomodule/redigo/redis/src/chpt13_goredis/pr04_ICHAT/utils"
@@ -13,7 +12,7 @@ func main() {
 	var str string
 	var input int
 	var err error
-	var name, pwd string
+	//var user = &model.User{}
 
 	for {
 		utils.ShowClientLoginMenu()
@@ -24,10 +23,7 @@ func main() {
 		}
 
 		if str == "clear" {
-			// Windows cls
-			cmd := exec.Command("cmd", "/c", "cls")
-			cmd.Stdout = os.Stdout
-			cmd.Run()
+			utils.ClearScreen()
 			continue
 		} else {
 			input, err = strconv.Atoi(str)
@@ -38,9 +34,10 @@ func main() {
 				switch input {
 				case 1:
 					// 登录
-					Login(&name, &pwd)
+					LoginMenu()
 				case 2:
 					// 注册
+					SignUpMenu()
 				case 0:
 					fmt.Println("已退出ICHAT APP...")
 					os.Exit(0)
