@@ -38,6 +38,11 @@ func ResetId(conn redis.Conn, id int) (err error) {
 func GetUserByName(conn redis.Conn, name string) (user *model.User, err error) {
 
 	defer conn.Close()
+	id, errGet := GetId(conn)
+	if id == 0 || errGet != nil {
+		err = model.ErrorUserdbNil
+		return
+	}
 
 	users, errDo := redis.StringMap(conn.Do("HGETALL", "userdb"))
 	if errDo != nil {

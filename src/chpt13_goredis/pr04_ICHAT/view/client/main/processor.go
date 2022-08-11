@@ -49,15 +49,15 @@ func SignUpMenu() (err error) {
 	var user = &model.User{}
 	fmt.Println("注册中...")
 	fmt.Print("*name  -> ")
-	fmt.Scanln(&(user.Name))
+	fmt.Scanln(&user.Name)
 	fmt.Print("*pwd   -> ")
-	fmt.Scanln(&(user.Pwd))
+	fmt.Scanln(&user.Pwd)
 	fmt.Print("age    -> ")
-	fmt.Scanln(&(user.Age))
+	fmt.Scanln(&user.Age)
 	fmt.Print("gender -> ")
-	fmt.Scanln(&(user.Gender))
+	fmt.Scanln(&user.Gender)
 	fmt.Print("eamil  -> ")
-	fmt.Scanln(&(user.Email))
+	fmt.Scanln(&user.Email)
 
 	//
 	msg, errVerfiy := process.SignUpVerfiy(*user)
@@ -73,9 +73,9 @@ func SignUpMenu() (err error) {
 		fmt.Println(err)
 		return
 	}
-	fmt.Println("注册成功, 请登录...")
 	time.Sleep(time.Second * 3)
 	utils.ClearScreen()
+	fmt.Println("注册成功, 请登录...")
 
 	return
 }
