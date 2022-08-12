@@ -8,13 +8,18 @@ import (
 	"github.com/gomodule/redigo/redis/src/chpt13_goredis/pr04_ICHAT/model"
 )
 
+/*
+	redis 用户数据库
+	key = 0 val = 0 用于存放数据库长度，即自增Id，用于创建下一条用户数据
+*/
+
 // 获取 Id
 func GetId(conn redis.Conn) (int, error) {
 
 	id, errDo := redis.Int(conn.Do("hget", "userdb", 0))
 	if errDo != nil {
 		if errDo == redis.ErrNil {
-			fmt.Println("[错误]:Id获取错误.")
+			fmt.Println("[错误]:Id获取错误,数据库不存在.")
 			errDo = model.ErrorUserdbNil
 		} else {
 			fmt.Println(errDo)
