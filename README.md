@@ -1,3 +1,3 @@
 # goprojects
-go study
+go study;
 Self-study code
