@@ -52,8 +52,6 @@ func ReadMsg(conn net.Conn) (msg model.Message, err error) {
 	var b = make([]byte, 10240)
 	cnt, errRead := conn.Read(b)
 	if errRead != nil {
-		fmt.Println("[错误]:报文读取错误.")
-		fmt.Println(errRead)
 		err = errRead
 		return
 	}

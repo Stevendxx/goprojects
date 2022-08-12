@@ -3,7 +3,6 @@ package main
 import (
 	"errors"
 	"fmt"
-	"time"
 
 	"github.com/gomodule/redigo/redis/src/chpt13_goredis/pr04_ICHAT/model"
 	"github.com/gomodule/redigo/redis/src/chpt13_goredis/pr04_ICHAT/utils"
@@ -35,8 +34,8 @@ func LoginMenu() (err error) {
 		fmt.Println(err)
 		return
 	}
-	fmt.Println("登录成功...")
-	time.Sleep(time.Second * 3)
+	fmt.Print("登录成功")
+	utils.ProgressBar(3)
 	utils.ClearScreen()
 
 	process.UserMain(conn, name, pwd)
@@ -53,7 +52,7 @@ func SignUpMenu() (err error) {
 	fmt.Print("*pwd   -> ")
 	fmt.Scanln(&user.Pwd)
 	fmt.Print("age    -> ")
-	fmt.Scanln(&user.Age)
+	fmt.Scanf("%d\r\n", &user.Age)
 	fmt.Print("gender -> ")
 	fmt.Scanln(&user.Gender)
 	fmt.Print("eamil  -> ")
@@ -73,7 +72,8 @@ func SignUpMenu() (err error) {
 		fmt.Println(err)
 		return
 	}
-	time.Sleep(time.Second * 3)
+	fmt.Print("注册成功")
+	utils.ProgressBar(3)
 	utils.ClearScreen()
 	fmt.Println("注册成功, 请登录...")
 

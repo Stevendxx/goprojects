@@ -107,7 +107,7 @@ func SignUpVerfiy(user model.User) (msg model.Message, err error) {
 		if errRead == io.EOF {
 			fmt.Println("[客户端]:服务器关闭...")
 		} else {
-			fmt.Println("[错误]:发送报文出现错误.")
+			fmt.Println("[错误]:读取报文出现错误.")
 			fmt.Println(errRead)
 		}
 		return
@@ -190,7 +190,8 @@ func UserMain(conn net.Conn, name, pwd string) {
 					// 我的消息
 				case 0:
 					// 退出软件
-					fmt.Println("已退出ICHAT APP...")
+					fmt.Print("正在退出登录")
+					utils.ProgressBar(3)
 					return
 				}
 			} else {
@@ -209,10 +210,10 @@ func AcceptMsg(conn net.Conn) {
 		if errRead != nil {
 			if errRead == io.EOF {
 				fmt.Println("[客户端]:服务器关闭...")
-			} else {
-				fmt.Println("[错误]:发送报文出现错误.")
+			} /*else {
+				fmt.Println("[错误]:读取报文出现错误.")
 				fmt.Println(errRead)
-			}
+			}*/
 			return
 		}
 		fmt.Println(msg)

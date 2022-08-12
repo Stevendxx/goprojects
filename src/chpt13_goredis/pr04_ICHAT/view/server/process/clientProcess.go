@@ -42,7 +42,7 @@ func HandleLoginMsg(conn net.Conn, msg model.Message) (err error) {
 
 // 登陆报文验证
 func LoginMsgVerfiy(loginMsg model.LoginMessage) (loginCode model.LoginCode, err error) {
-	fmt.Println(loginMsg)
+
 	user, errGet := service.GetUserByName(loginMsg.UserName)
 	if errGet != nil {
 		fmt.Printf("[错误]:用户 %s 获取失败.\n", loginMsg.UserName)
